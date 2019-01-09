@@ -3,12 +3,17 @@ import React from 'react';
 /**
  * Functional React component for congrats message
  * @function
+ * @param {object} props - React props.
  * @returns {JSX.Element} Rendered component (or null if 'success' prop is false)
  */
 
 
-export default () => {
+export default (props) => {
 	return (
-		<div/>
+		<div data-test="component-congrats">
+			<span data-test="congrats-message">
+				{props.success ? "Congratulations! You guessed the word" : ""}
+			</span>
+		</div>
 		)
 }
