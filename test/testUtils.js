@@ -1,16 +1,22 @@
 import checkPropTypes from 'check-prop-types';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import rootReducer from '../src/reducers';
+import { middlewares } from '../src/configureStore';
+
+
+// storeFactory function is unused / unusable now that react-redux 6.x
+// deprecates passing store directly to component
 /**
  * Create a testing store with imported reducers, initial state, and middleware.
- * globals: rootReducer.
+ * globals: rootReducer, middlewares
  * @param  {object} initialState - Initial state for the store.
  * @function  storeFactory
  * @return {Store}              - Redux store.
  */
 export const storeFactory = (initialState) => {
-	return createStore(rootReducer, initialState);
+	const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
+	return createStoreWithMiddleware(rootReducer, initialState);
 }
 
 /**
