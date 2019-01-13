@@ -71,6 +71,18 @@ describe('render', () => {
 	});
 });
 
-describe('update state', () => {
-
+describe('redux props', () => {
+	test('has success piece of state as prop', () => {
+		const success = true;
+		const wrapper = setup({ success });
+		const successProp = wrapper.instance().props.success;
+		expect(successProp).toBe(success);
+	});
+	// this test doesn't work with react-redux 6.x
+	//
+	// test('`guessWord` action creator is a function prop', () => {
+	// 	const wrapper = setup();
+	// 	const guessWordProp = wrapper.instance().props.guessWord;
+	// 	expect(guessWordProp).toBeInstanceOf(Function);
+	// });
 });
