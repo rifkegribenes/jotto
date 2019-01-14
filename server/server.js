@@ -1,7 +1,9 @@
 const express = require('express');
 const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 // read words from json file
 const fileContents = fs.readFileSync('./five-letter-words.json', 'utf-8');
