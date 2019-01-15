@@ -11,8 +11,8 @@ import PropTypes from 'prop-types';
 
 const Congrats = (props) => {
 	return (
-		<div data-test="component-congrats" className="alert alert-success">
-			<span data-test="congrats-message">
+		<div data-test="component-congrats" className={props.succes ? "alert alert-success" : ""}>
+			<span data-test="congrats-message" >
 				{props.success ? "Congratulations! You guessed the word" : ""}
 			</span>
 		</div>

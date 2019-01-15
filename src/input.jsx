@@ -35,7 +35,7 @@ export class UnconnectedInput extends Component {
 				<form className="form-inline">
 					<input
 						data-test="input-box"
-						className="mb-2 mx-sm-3"
+						className="mb-2 mx-sm-3 my-sm-3 form-control input-lg"
 						ref={this.inputBox}
 						id="word-guess"
 						type="text"
@@ -43,11 +43,11 @@ export class UnconnectedInput extends Component {
 					/>
 					<button
 						data-test="submit-button"
-						className="btn btn-primary mb-2"
+						className="btn btn-primary mb-2 my-sm-3"
 						type="submit"
 						onClick={this.submitGuessedWord}
 					>
-						Submit
+						Guess
 					</button>
 				</form>
 				);
