@@ -35,7 +35,7 @@ export class UnconnectedInput extends Component {
 				<form className="form-inline">
 					<input
 						data-test="input-box"
-						className="mb-2 mx-sm-3 my-sm-3 form-control input-lg"
+						className="mb-2 mr-sm-3 my-sm-3 form-control input-lg"
 						ref={this.inputBox}
 						id="word-guess"
 						type="text"
