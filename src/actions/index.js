@@ -6,6 +6,7 @@ export const actionTypes = {
 	CORRECT_GUESS: 'CORRECT_GUESS',
 	GUESS_WORD: 'GUESS_WORD',
 	SET_SECRET_WORD: 'SET_SECRET_WORD',
+	RESET_GAME: 'RESET_GAME',
 };
 
 /**
@@ -29,7 +30,7 @@ export const guessWord = (guessedWord) => {
 		});
 
 		if (guessedWord === secretWord) {
-			dispatch({ type: actionTypes.CORRECT_GUESS })
+			dispatch({ type: actionTypes.CORRECT_GUESS });
 		}
 	}
 };
@@ -43,5 +44,19 @@ export const getSecretWord = () => {
 					payload: response.data
 				})
 			});
+	}
+}
+
+/**
+ * Returns Redux Thunk function that dispatches RESET_GAME action
+ * and then calls getSecretWord function to set new secret word
+ * @function resetGame
+ * @return {function}           - Redux Thunk function.
+ */
+export const resetGame = () => {
+	console.log('resetGame');
+	return (dispatch) => {
+		dispatch({ type: actionTypes.RESET_GAME });
+		getSecretWord();
 	}
 }
