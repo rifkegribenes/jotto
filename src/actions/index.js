@@ -35,28 +35,40 @@ export const guessWord = (guessedWord) => {
 	}
 };
 
-export const getSecretWord = () => {
-	return (dispatch) => {
-		return axios.get('http://localhost:3030')
-			.then(response => {
-				dispatch({
-					type: actionTypes.SET_SECRET_WORD,
-					payload: response.data
-				})
-			});
-	}
-}
+/**
+ * Dispatch axios action to get secret word from random word server.
+ * @function getSecretWordDispatch
+ * @param {dispatch} dispatch - Redux Thunk dispatch.
+ *
+ */
+const getSecretWordDispatch = (dispatch) => {
+  return axios.get('http://localhost:3030')
+    .then(response => {
+      dispatch({
+        type: actionTypes.SET_SECRET_WORD,
+        payload: response.data
+      });
+    });
+};
 
 /**
- * Returns Redux Thunk function that dispatches RESET_GAME action
- * and then calls getSecretWord function to set new secret word
+ * Returns Redux Thunk function that dispatches GET_SECRET_WORD action
+ *     after axios promise resolves
+ * @function getSecretWord
+ * @returns {function} - Redux Thunk function.
+*/
+export const getSecretWord = () => {
+  return getSecretWordDispatch;
+};
+
+/**
+ * Action creator to reset game and get a new secret word.
  * @function resetGame
- * @return {function}           - Redux Thunk function.
- */
+ * @returns {function} - Redux Thunk function that dispatches RESET_GAME action and calls getSecretWord().
+*/
 export const resetGame = () => {
-	console.log('resetGame');
-	return (dispatch) => {
+  return (dispatch) => {
 		dispatch({ type: actionTypes.RESET_GAME });
-		getSecretWord();
+    return getSecretWordDispatch(dispatch);
 	}
 }

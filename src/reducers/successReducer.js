@@ -12,7 +12,6 @@ export default (state=false, action) => {
 		case actionTypes.CORRECT_GUESS:
 			return true;
 		case actionTypes.RESET_GAME:
-			console.log('RESET_GAME');
 			return false;
 		default:
 			return state;
