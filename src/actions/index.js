@@ -7,6 +7,7 @@ export const actionTypes = {
 	GUESS_WORD: 'GUESS_WORD',
 	SET_SECRET_WORD: 'SET_SECRET_WORD',
 	RESET_GAME: 'RESET_GAME',
+	GIVE_UP: 'GIVE_UP',
 };
 
 /**
@@ -70,5 +71,17 @@ export const resetGame = () => {
   return (dispatch) => {
 		dispatch({ type: actionTypes.RESET_GAME });
     return getSecretWordDispatch(dispatch);
+	}
+}
+
+/**
+ * Action creator to 'give up'
+ * Displays the secret word and 'New Word' button.
+ * @function giveUp
+ * @returns {function} - Redux Thunk function that dispatches GIVE_UP action.
+*/
+export const giveUp = () => {
+  return (dispatch) => {
+		dispatch({ type: actionTypes.GIVE_UP });
 	}
 }

@@ -7,7 +7,7 @@ import Congrats from './Congrats';
 import Input from './Input';
 import TotalGuesses from './TotalGuesses';
 import NewWordButton from './NewWordButton';
-import { getSecretWord, resetGame } from './actions';
+import { getSecretWord, resetGame, giveUp } from './actions';
 
 export class UnconnectedApp extends Component {
 
