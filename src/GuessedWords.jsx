@@ -62,7 +62,7 @@ GuessedWords.propTypes = {
 			guessedWord: PropTypes.string.isRequired,
 			letterMatchCount: PropTypes.number.isRequired,
 		})
-	).isRequired
+	)
 };
 
 export default GuessedWords;

@@ -7,7 +7,8 @@ import Congrats from './Congrats';
 import Input from './Input';
 import TotalGuesses from './TotalGuesses';
 import NewWordButton from './NewWordButton';
-import { getSecretWord, resetGame, giveUp } from './actions';
+import Sorry from './Sorry';
+import { getSecretWord, resetGame } from './actions';
 
 export class UnconnectedApp extends Component {
 
@@ -24,20 +25,19 @@ export class UnconnectedApp extends Component {
     return (
       <div className="container px-4">
         <h1 className="text-center">Jotto</h1>
-        <div className="mb-3">The secret word is <strong>{this.props.secretWord}</strong></div>
-        <Congrats success={this.props.success ? this.props.success : false} />
+        <Congrats success={this.props.success} />
+        <Sorry gaveUp={this.props.gaveUp} secretWord={this.props.secretWord} />
         <Input />
-        <NewWordButton display={this.props.success ? this.props.success : false} resetAction={this.props.resetGame} />
-        <GuessedWords guessedWords={this.props.guessedWords ? this.props.guessedWords : []} />
-        <TotalGuesses numberGuesses={this.props.guessedWords ? this.props.guessedWords.length : 0} />
+        <NewWordButton display={this.props.success || this.props.gaveUp} resetAction={this.props.resetGame} />
+        <GuessedWords guessedWords={this.props.guessedWords} />
+        <TotalGuesses numberGuesses={this.props.guessedWords} />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-	const { success, guessedWords, secretWord } = state;
-	return { success, guessedWords, secretWord };
+const mapStateToProps = ({ success, guessedWords, secretWord, gaveUp }) => {
+	return { success, guessedWords, secretWord, gaveUp };
 };
 
 const actions = { getSecretWord, resetGame };
