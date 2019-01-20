@@ -2,7 +2,7 @@ import { actionTypes } from '../actions';
 
 
 /**
- * @function giveUpReducer
+ * @function gaveUpReducer
  * @param  {bool} state  - True or False.
  * @param  {object} action - Object to be reduced.
  * @return {boolean}        New success state.

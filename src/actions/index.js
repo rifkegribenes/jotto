@@ -77,10 +77,10 @@ export const resetGame = () => {
 /**
  * Action creator to 'give up'
  * Displays the secret word and 'New Word' button.
- * @function giveUp
+ * @function giveUpAction
  * @returns {function} - Redux Thunk function that dispatches GIVE_UP action.
 */
-export const giveUp = () => {
+export const giveUpAction = () => {
   return (dispatch) => {
 		dispatch({ type: actionTypes.GIVE_UP });
 	}
