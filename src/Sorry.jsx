@@ -14,7 +14,7 @@ const Sorry = (props) => {
     return (
       <div data-test="component-sorry" className="alert alert-danger mb-3">
         <span data-test="sorry-message">
-          The secret word was {props.secretWord}. <br />
+          The secret word was <strong>{props.secretWord}</strong>. <br />
           Better luck next time!
         </span>
       </div>

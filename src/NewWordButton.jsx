@@ -15,7 +15,7 @@ const NewWordButton = (props) => {
 				<button
 					data-test="component-new-word-button"
 					className="btn btn-primary mb-3"
-					onClick={() => props.resetGame()}
+					onClick={props.resetAction}
 				>
 					New Word
 				</button>

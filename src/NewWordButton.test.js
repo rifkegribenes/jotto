@@ -37,10 +37,10 @@ test('does not throw warning with expected props', () => {
 	const expectedProps = { success: false };
 	checkProps(NewWordButton, expectedProps);
 });
-test('calls `resetGame` prop upon button click', () => {
+test('calls `resetAction` prop upon button click', () => {
   // create a mock function so we can see whether it's called on click
   const resetGameMock = jest.fn();
-  const wrapper = setup({ display: true, resetGame: resetGameMock });
+  const wrapper = setup({ display: true, resetAction: resetGameMock });
 
   // find the button (which is the top level element of this component)
   const resetButton = findByTestAttr(wrapper, 'component-new-word-button');
