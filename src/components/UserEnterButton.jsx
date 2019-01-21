@@ -17,7 +17,7 @@ const UserEnterButton = (props) => {
 					className="btn btn-primary mb-3"
 					onClick={props.displayUserEnterForm}
 				>
-					New Word
+					Enter your own secret word
 				</button>
 			)
 		} else {

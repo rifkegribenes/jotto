@@ -8,6 +8,7 @@ import Input from './components/Input';
 import TotalGuesses from './components/TotalGuesses';
 import NewWordButton from './components/NewWordButton';
 import Sorry from './components/Sorry';
+import UserEnterButton from './components/UserEnterButton';
 import { getSecretWord, resetGame } from './store/actions';
 
 export class UnconnectedApp extends Component {
@@ -31,6 +32,7 @@ export class UnconnectedApp extends Component {
         <NewWordButton display={this.props.success || this.props.gaveUp} resetAction={this.props.resetGame} />
         <GuessedWords guessedWords={this.props.guessedWords} />
         <TotalGuesses numberGuesses={this.props.guessedWords} />
+        <UserEnterButton display={this.props.userEnter === 'initial'} />
       </div>
     );
   }
