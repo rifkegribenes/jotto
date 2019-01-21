@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 
-import GuessedWords from './GuessedWords';
-import Congrats from './Congrats';
-import Input from './Input';
-import TotalGuesses from './TotalGuesses';
-import NewWordButton from './NewWordButton';
-import Sorry from './Sorry';
-import { getSecretWord, resetGame } from './actions';
+import GuessedWords from './components/GuessedWords';
+import Congrats from './components/Congrats';
+import Input from './components/Input';
+import TotalGuesses from './components/TotalGuesses';
+import NewWordButton from './components/NewWordButton';
+import Sorry from './components/Sorry';
+import { getSecretWord, resetGame } from './store/actions';
 
 export class UnconnectedApp extends Component {
 

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 // import { findByTestAttr, storeFactory } from '../test/testUtils';
 // import Input from './Input';
-import { findByTestAttr } from '../test/testUtils';
+import { findByTestAttr } from '../../test/testUtils';
 import { UnconnectedInput } from './Input';
 
 /**
