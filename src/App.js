@@ -27,7 +27,7 @@ export class UnconnectedApp extends Component {
         <h1 className="text-center">Jotto</h1>
         <Congrats success={this.props.success} />
         <Sorry gaveUp={this.props.gaveUp} secretWord={this.props.secretWord} />
-        <Input />
+        {!this.props.gaveUp && <Input />}
         <NewWordButton display={this.props.success || this.props.gaveUp} resetAction={this.props.resetGame} />
         <GuessedWords guessedWords={this.props.guessedWords} />
         <TotalGuesses numberGuesses={this.props.guessedWords} />
