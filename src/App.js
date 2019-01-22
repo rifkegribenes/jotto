@@ -9,7 +9,11 @@ import TotalGuesses from './components/TotalGuesses';
 import NewWordButton from './components/NewWordButton';
 import Sorry from './components/Sorry';
 import UserEnterButton from './components/UserEnterButton';
-import { getSecretWord, resetGame, displayUserEnterForm } from './store/actions';
+import UserEnterForm from './components/UserEnterForm';
+import { getSecretWord,
+  resetGame,
+  setUserSecretWord,
+  setUserEntering } from './store/actions';
 
 export class UnconnectedApp extends Component {
 
@@ -23,31 +27,48 @@ export class UnconnectedApp extends Component {
 	}
 
   render() {
-    const guessedWordsLength = this.props.guessedWords ? this.props.guessedWords.length : 0;
+    let contents;
+    const zeroGuessedWords = this.props.guessedWords ? this.props.guessedWords.length === 0 : true;
+    if (this.props.userEnter === 'inProgress') {
+      contents = (
+        <UserEnterForm formAction={this.props.setUserSecretWord}/>
+      );
+    } else {
+      contents = (
+        <div>
+          <Congrats success={this.props.success} />
+          <Sorry gaveUp={this.props.gaveUp} secretWord={this.props.secretWord} />
+          <NewWordButton
+            display={this.props.success || this.props.gaveUp}
+            resetAction={this.props.resetGame}
+          />
+          <Input />
+          <GuessedWords guessedWords={this.props.guessedWords} />
+          <TotalGuesses numberGuesses={this.props.guessedWords} />
+          <UserEnterButton
+            display={zeroGuessedWords}
+             buttonAction={this.props.setUserEntering}
+          />
+        </div>
+      );
+    }
     return (
-      <div className="container px-4 py-4">
-        <h1 className="text-center">Jotto</h1>
-        <Congrats success={this.props.success} />
-        <Sorry gaveUp={this.props.gaveUp} secretWord={this.props.secretWord} />
-        {!this.props.gaveUp && <Input />}
-        <NewWordButton
-          display={this.props.success || this.props.gaveUp}
-          resetAction={this.props.resetGame}
-        />
-        <GuessedWords guessedWords={this.props.guessedWords} />
-        <TotalGuesses numberGuesses={this.props.guessedWords} />
-        <UserEnterButton
-          display={guessedWordsLength === 0}
-          displayUserEnterForm={displayUserEnterForm}
-        />
+      <div className="container mt-5">
+        <h1>Jotto</h1>
+        { contents }
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ success, guessedWords, secretWord, gaveUp }) => {
-	return { success, guessedWords, secretWord, gaveUp };
+const mapStateToProps = ({ success, guessedWords, secretWord, gaveUp, userEnter }) => {
+	return { success, guessedWords, secretWord, gaveUp, userEnter };
 };
 
-const actions = { getSecretWord, resetGame };
+const actions = {
+  getSecretWord,
+  resetGame,
+  setUserSecretWord,
+  setUserEntering,
+};
 export default connect(mapStateToProps, actions)(UnconnectedApp);

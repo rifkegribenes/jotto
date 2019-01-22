@@ -15,7 +15,8 @@ const UserEnterButton = (props) => {
 			<button
 				data-test="component-user-enter-button"
 				className="btn btn-primary mb-3 mt-5"
-				onClick={props.displayUserEnterForm}
+				onClick={props.buttonAction}
+				type="button"
 			>
 				Enter your own secret word
 			</button>
@@ -27,7 +28,7 @@ const UserEnterButton = (props) => {
 
 UserEnterButton.propTypes = {
 	display: PropTypes.bool,
-	displayUserEnterForm: PropTypes.func
+	buttonAction: PropTypes.func
 }
 
 export default UserEnterButton;

@@ -1,5 +1,5 @@
 import { storeFactory } from '../test/testUtils';
-import { guessWord } from './store/actions';
+import { guessWord, setUserSecretWord } from './store/actions';
 
 describe('guessWord action dispatcher', () => {
 	const secretWord = 'party';
@@ -21,7 +21,7 @@ describe('guessWord action dispatcher', () => {
 					guessedWord: unsuccessfulGuess,
 					letterMatchCount: 3
 				}],
-				userEnter: 'initial'
+				userEnter: null
 			}
 			expect(newState).toEqual(expectedState);
 		});
@@ -36,7 +36,7 @@ describe('guessWord action dispatcher', () => {
 					guessedWord: secretWord,
 					letterMatchCount: 5
 				}],
-				userEnter: 'initial'
+				userEnter: null
 			}
 			expect(newState).toEqual(expectedState);
 		});
@@ -56,7 +56,7 @@ describe('guessWord action dispatcher', () => {
 				gaveUp: false,
 				success: false,
 				guessedWords: [ ...guessedWords, { guessedWord: unsuccessfulGuess, letterMatchCount: 3}],
-				userEnter: 'initial'
+				userEnter: null
 			}
 			expect(newState).toEqual(expectedState);
 		});
@@ -68,9 +68,35 @@ describe('guessWord action dispatcher', () => {
 				success: true,
 				gaveUp: false,
 				guessedWords: [ ...guessedWords, { guessedWord: secretWord, letterMatchCount: 5}],
-				userEnter: 'initial'
+				userEnter: null
 			}
 			expect(newState).toEqual(expectedState);
 		})
 	});
+});
+
+describe('setUserSecretWord action dispatcher', () => {
+  // this is in the integration test section because it
+  // involves the setUserSecretWord action creator and two reducers
+  let store;
+  let newState;
+
+  // word the user entered
+  const userSecretWord = 'lunch';
+
+  // word we got from the server
+  const initialState = { secretWord: 'party' };
+
+  beforeEach(() => {
+    store = storeFactory(initialState);
+    store.dispatch(setUserSecretWord(userSecretWord));
+    newState = store.getState();
+  });
+
+  test('updates `secretWord` state correctly after entered word', () => {
+    expect(newState.secretWord).toBe(userSecretWord);
+  });
+  test('updates `userEnter` state correctly after entered word', () => {
+    expect(newState.userEnter).toBe('done');
+  });
 });

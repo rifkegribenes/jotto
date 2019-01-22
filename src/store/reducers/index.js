@@ -6,9 +6,9 @@ import gaveUp from './gaveUpReducer';
 import userEnter from './userEnterReducer';
 
 export default combineReducers({
+	userEnter,
 	success,
 	guessedWords,
 	secretWord,
 	gaveUp,
-	userEnter
 });
