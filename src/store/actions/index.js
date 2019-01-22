@@ -85,3 +85,12 @@ export const resetGame = () => {
 export const giveUpAction = () => {
   return { type: actionTypes.GIVE_UP };
 }
+
+/**
+ * Action creator to display user enter secret word form
+ * @function displayUserEnterForm
+ * @returns {object} - Action with type = DISPLAY_UE_FORM.
+*/
+export const displayUserEnterForm = () => {
+  return { type: actionTypes.DISPLAY_UE_FORM };
+}

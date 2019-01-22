@@ -11,25 +11,23 @@ import PropTypes from 'prop-types';
 
 const UserEnterButton = (props) => {
 	if (props.display) {
-			return (
-				<button
-					data-test="component-user-enter-button"
-					className="btn btn-primary mb-3"
-					onClick={props.displayUserEnterForm}
-				>
-					Enter your own secret word
-				</button>
-			)
-		} else {
-			return (
-			<div data-test="component-user-enter-button" />
-			)
-		}
-
-}
+		return (
+			<button
+				data-test="component-user-enter-button"
+				className="btn btn-primary mb-3 mt-5"
+				onClick={props.displayUserEnterForm}
+			>
+				Enter your own secret word
+			</button>
+			);
+	} else {
+		return (<div data-test="component-user-enter-button" />);
+	}
+};
 
 UserEnterButton.propTypes = {
-	display: PropTypes.bool
+	display: PropTypes.bool,
+	displayUserEnterForm: PropTypes.func
 }
 
 export default UserEnterButton;

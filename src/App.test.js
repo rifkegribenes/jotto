@@ -35,6 +35,18 @@ describe('redux properties', () => {
 		const guessedWordsProp = wrapper.instance().props.guessedWords;
 		expect(guessedWordsProp).toEqual(guessedWords);
 	});
+	test('has access to `gaveUp` state', () => {
+		const gaveUp = false;
+		const wrapper = setup({ gaveUp });
+		const gaveUpProp = wrapper.instance().props.gaveUp;
+		expect(gaveUpProp).toEqual(gaveUp);
+	});
+	test('has access to `userEnter` state', () => {
+		const userEnter = 'initial';
+		const wrapper = setup({ userEnter });
+		const userEnterProp = wrapper.instance().props.userEnter;
+		expect(userEnterProp).toEqual(userEnter);
+	});
 	// this test doesn't work with react-redux 6.x
 	//
 	// test('`getSecretWord` action creator is a function on the props', () => {
