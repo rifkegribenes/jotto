@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 // import { storeFactory } from '../test/testUtils';
 // import App from './App';
 
-import App, { UnconnectedApp } from './App';
+import { UnconnectedApp } from './App';
 
 /**
  * @function setup

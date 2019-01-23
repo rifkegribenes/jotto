@@ -4,6 +4,7 @@ import guessedWords from './guessedWordsReducer';
 import secretWord from './secretWordReducer';
 import gaveUp from './gaveUpReducer';
 import userEnter from './userEnterReducer';
+import error from './errorReducer';
 
 export default combineReducers({
 	userEnter,
@@ -11,4 +12,5 @@ export default combineReducers({
 	guessedWords,
 	secretWord,
 	gaveUp,
+	error
 });

@@ -10,6 +10,7 @@ import NewWordButton from './components/NewWordButton';
 import Sorry from './components/Sorry';
 import UserEnterButton from './components/UserEnterButton';
 import UserEnterForm from './components/UserEnterForm';
+import ErrorMessage from './components/ErrorMessage';
 import { getSecretWord,
   resetGame,
   setUserSecretWord,
@@ -33,6 +34,8 @@ export class UnconnectedApp extends Component {
       contents = (
         <UserEnterForm formAction={this.props.setUserSecretWord}/>
       );
+    } else if (this.props.error) {
+      contents = ( <ErrorMessage error={this.props.error} /> );
     } else {
       contents = (
         <div>
@@ -61,8 +64,8 @@ export class UnconnectedApp extends Component {
   }
 }
 
-const mapStateToProps = ({ success, guessedWords, secretWord, gaveUp, userEnter }) => {
-	return { success, guessedWords, secretWord, gaveUp, userEnter };
+const mapStateToProps = ({ success, guessedWords, secretWord, gaveUp, userEnter, error }) => {
+	return { success, guessedWords, secretWord, gaveUp, userEnter, error };
 };
 
 const actions = {
